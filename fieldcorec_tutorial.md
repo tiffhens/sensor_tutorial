@@ -16,7 +16,7 @@
   This tutorial assumes that you are curious about the Raspberry Pi and have one, 
   already have done a few things to prepare, and you have the materials listed above. 
 
-1. [1][Connect] to your Raspberry Pi. We are using SSH.
+1. [Connect][1] to your Raspberry Pi. We are using SSH.  
 2. Load the OS: Make sure it’s running [raspbian jesse][2]
 3. Configure [I2C][3] on your raspi
 4. [Download the data sheet][4] for reference.
@@ -27,6 +27,9 @@
 [4]: https://cdn-shop.adafruit.com/datasheets/ads1015.pdf "Data Sheet"
 
 ## Assembly/Wiring Instructions
+
+  Pay attention to the orientation of the pins that connect your breadboard to your Raspi as to not break your materials. Look for the 3v3 pin on the pi cobbler and make sure it matches the gpio key online.
+
   Connect the ADS1015 Board to the Raspberry Pi as follows, using a breadboard
   and jumper wires in order to give yourself more room.
   
@@ -37,7 +40,7 @@
   * ADS1x15 SDA to Raspberry Pi SDA
 
 ![Wiring Photo][1]
-[1]:https://flic.kr/p/Ma5pjY
+[1]:https://c1.staticflickr.com/8/7770/29638761944_b968dc30c2_b.jpg
 
 
 ## Libraries - What You need to Install and Why
@@ -47,20 +50,45 @@
 Now that you’ve finished wiring, you’re ready to install the Adafruit ADS1x15 Python Library to use the ADC.
 It is available here on [Github](https://github.com/adafruit/Adafruit_Python_ADS1x15)
 
-To install from the source on Github connect to a terminal on the Raspberry Pi and run the following commands:
+In the following sequence, we install python tools, clone the github repo, and change the directory. 
+
+Open a terminal on the Raspberry Pi and run the following commands:
 
 ```
 sudo apt-get update
+```
+press enter 
+
+```
 sudo apt-get install build-essential python-dev python-smbus git
+```
+
+press enter 
+
+```
 cd ~
+```
+press enter 
+
+```
 git clone https://github.com/adafruit/Adafruit_Python_ADS1x15.git
+```
+press enter 
+
+```
 cd Adafruit_Python_ADS1x15
+```
+
+press enter 
+
+```
+sudo ipython3 setup.py install
 ```
 
 When you’ve finished and successfully installed this library, you’ll see something similar to this:
 
 ![Library Screenshot][2]
-[2]:https://flic.kr/p/MEzTUY
+[2]:https://c5.staticflickr.com/9/8130/29972694740_fb14823849_b.jpg
 
 #### Next, install this Package manager for python libraries.
   Pip functions similarly to the package manager Aptitude, however it is specifically for Python. 
@@ -147,7 +175,7 @@ values.  Every half second a new row will be printed with the latest channel val
 You will see output that looks something like this:
 
 ![Column Screenshot][3]
-[3]:https://flic.kr/p/Ma7Unn
+[3]:https://c8.staticflickr.com/8/7721/29639249863_b05e2b79df_b.jpg
 
 ## Actually doing shit - Connecting an analog sensor
   Once we know that everything is hooked up correctly, we can start adding analog sensor input.
@@ -164,11 +192,15 @@ You will see output that looks something like this:
   Share the power and ground from your ADC, and connect the yellow signal wire into A0, 
   as shown:
   
-  ![](https://flic.kr/p/MEzTUh)
+  ![](https://c7.staticflickr.com/6/5749/29972694830_21a348dab8_b.jpg)
   
-  Once connected, use your terminal to open simpletest.py once again, and notice that when you turn the knob,
-  The first column's values changes. You can guess that when you connect other sensors, the values will change 
-  in those columns.
+  Once connected, use your terminal to first go back to the Adafruit directory:
+  ```
+  cd ~/Adafruit_Python_ADS1x15/examples
+  ```
+  Then open simpletest.py once again, and notice that when you turn the knob, The first column's values changes. You can guess that when you connect other sensors, the values will change in those columns.
+  
+
   
 ## Level Up, bro. Add more Sensors
 
@@ -181,7 +213,7 @@ You will see output that looks something like this:
   the signal cable into A1, as shown.
   
   ![Light Sensor Wiring Photo][5]
-  [5]:https://flic.kr/p/Ma7Unn
+  [5]:https://c5.staticflickr.com/8/7576/29972694700_ace1d67e8c_b.jpg
   
   Once you've done this, go back to Terminal and run simpletest.py once again. When you cover up the light 
   sensor, you'll see the values in the second column vary.
