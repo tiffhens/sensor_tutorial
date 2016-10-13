@@ -28,7 +28,7 @@
 
 ## Assembly/Wiring Instructions
 
-  Pay attention to the orientation of the pins that connect your breadboard to your Raspi as to not break your materials. 
+  Pay attention to the orientation of the pins that connect your breadboard to your Raspi as to not break your materials. Look for the 3v3 pin on the pi cobbler and make sure it matches the gpio key online.
 
   Connect the ADS1015 Board to the Raspberry Pi as follows, using a breadboard
   and jumper wires in order to give yourself more room.
